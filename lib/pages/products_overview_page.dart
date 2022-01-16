@@ -1,10 +1,11 @@
 import 'package:ecommerce/components/product_item.dart';
 import 'package:ecommerce/data/dummy_data.dart';
-import 'package:ecommerce/models/product.dart';
+import 'package:ecommerce/models/product_list.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductsOverViewPage extends StatelessWidget {
-  final List<Product> loadedProducts = dummyProducts;
+  final ProductList loadedProducts = Get.put(ProductList());
 
   ProductsOverViewPage({Key? key}) : super(key: key);
 
@@ -17,7 +18,7 @@ class ProductsOverViewPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: GridView.builder(
-          itemCount: loadedProducts.length,
+          itemCount: loadedProducts.items.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 3 / 2,
@@ -25,7 +26,7 @@ class ProductsOverViewPage extends StatelessWidget {
             mainAxisSpacing: 10,
           ),
           itemBuilder: (ctx, i) => (ProductItem(
-            product: loadedProducts[i],
+            product: loadedProducts.items[i],
           )),
         ),
       ),
