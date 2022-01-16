@@ -1,3 +1,4 @@
+import 'package:ecommerce/components/product_item.dart';
 import 'package:ecommerce/data/dummy_data.dart';
 import 'package:ecommerce/models/product.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,9 @@ class ProductsOverViewPage extends StatelessWidget {
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
           ),
-          itemBuilder: (ctx, i) => (Text(loadedProducts[i].title)),
+          itemBuilder: (ctx, i) => (ProductItem(
+            product: loadedProducts[i],
+          )),
         ),
       ),
     );
